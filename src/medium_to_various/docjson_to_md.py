@@ -9,13 +9,13 @@ def docjson_to_md(docjson_file, md_file):
     md_lines = []
     for d in docjson:
         tag, text = d['tag'], d.get('text')
-        if tag == 'h1':
+        if tag == 'title':
             md_lines.append(f'# {text}')
-        elif tag == 'h2':
+        elif tag == 'h1':
             md_lines.append(f'## {text}')
-        elif tag == 'h3':
+        elif tag == 'h2':
             md_lines.append(f'### {text}')
-        elif tag == 'h4':
+        elif tag == 'h3':
             md_lines.append(f'#### {text}')
         elif tag == 'p':
             md_lines.append(f'{text}')

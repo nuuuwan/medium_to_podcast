@@ -4,3 +4,4 @@
   *  [2022-01-29 08:29AM] Added remote_file_utils
   *  [2022-01-29 08:50AM] Various minor
   *  [2022-01-29 08:51AM] remote_file_utils: Fixed long line
+  *  [2022-01-29 09:42AM] Various style: Font Name, Align etc

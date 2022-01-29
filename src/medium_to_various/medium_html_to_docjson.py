@@ -30,12 +30,12 @@ def medium_html_to_docjson(html_file, docjson_file):
         text = _clean(child.text)
         if child.name == 'h3':
             if first_title:
-                docjson.append(dict(tag='h1', text=text))
+                docjson.append(dict(tag='title', text=text))
                 first_title = False
             else:
-                docjson.append(dict(tag='h2', text=text))
+                docjson.append(dict(tag='h1', text=text))
         elif child.name == 'h4':
-            docjson.append(dict(tag='h3', text=text))
+            docjson.append(dict(tag='h2', text=text))
         elif child.name == 'p':
             docjson.append(dict(tag='p', text=text))
         elif child.name == 'blockquote':
@@ -48,7 +48,7 @@ def medium_html_to_docjson(html_file, docjson_file):
             src = child['src']
             docjson.append(dict(tag='img', src=src))
         elif child.name == 'figcaption':
-            docjson.append(dict(tag='figcaption', text=f'{text}'))
+            docjson.append(dict(tag='figcaption', text=f'{text}]'))
 
     child = soup.find('time')
     if child:

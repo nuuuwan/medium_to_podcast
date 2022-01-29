@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     random.seed(1)
     random.shuffle(html_files)
-    SAMPLE_SIZE = 10
+    SAMPLE_SIZE = 3
     sample_html_files = html_files[:SAMPLE_SIZE]
     # sample_html_files = list(
     #     map(
