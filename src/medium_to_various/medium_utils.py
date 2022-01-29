@@ -29,17 +29,19 @@ if __name__ == '__main__':
 
     random.seed(1)
     random.shuffle(html_files)
-    SAMPLE_SIZE = 3
-    sample_html_files = html_files[:SAMPLE_SIZE]
-    # sample_html_files = list(
-    #     map(
-    #         lambda file_only: os.path.join(DIR_MEDIUM_POSTS, file_only),
-    #         [
-    #             '2021-07-13_'
-    #             + 'Drawing-Dorling-Cartograms-of-Sri-Lanka-a22a8886d057.html'
-    #         ],
-    #     )
-    # )
+    SAMPLE_SIZE = 50
+    # sample_html_files = html_files[:SAMPLE_SIZE]
+    sample_html_files = list(
+        map(
+            lambda file_only: os.path.join(DIR_MEDIUM_POSTS, file_only),
+            [
+                '2021-11-01_'
+                + 'The-2-Most-Important-Questions-about-Blockchain-c1e5937ff9fd.html',
+                '2021-07-13_'
+                + 'Drawing-Dorling-Cartograms-of-Sri-Lanka-a22a8886d057.html',
+            ],
+        )
+    )
 
     docjson_files = []
     for i, html_file in enumerate(sample_html_files):

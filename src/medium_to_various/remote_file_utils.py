@@ -21,6 +21,8 @@ def _convert_if_needed(local_file):
 def _get_local_file_only(url):
     h = hashx.md5(url)
     ext = url.split('.')[-1]
+    if len(ext) > 5:
+        ext = 'png'
     local_file = os.path.join(DIR_REMOTE_FILES, f'{h}.{ext}')
     return local_file
 
@@ -32,6 +34,7 @@ def _download_if_not_exists(local_file, url):
 
 
 def get_local_file(url):
+    print(url)
     local_file = _get_local_file_only(url)
     _download_if_not_exists(local_file, url)
     local_file = _convert_if_needed(local_file)
