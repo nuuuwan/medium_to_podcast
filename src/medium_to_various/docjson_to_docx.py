@@ -8,7 +8,8 @@ from utils import jsonx
 from medium_to_various.remote_file_utils import get_local_file
 
 DEFAULT_IMAGE_WIDTH = 3
-DEFAULT_FONT_NAME = 'Georgia'
+DEFAULT_FONT_NAME = 'Palatino'
+DEFAULT_FONT_NAME_MONOSPACE = 'Monaco'
 
 
 def _build_styles(document):
@@ -35,26 +36,37 @@ def _build_styles(document):
     style = document.styles.add_style('New Heading 0', WD_STYLE_TYPE.PARAGRAPH)
     style.font.size = Pt(20)
     style.font.name = DEFAULT_FONT_NAME
-    style.font.color.rgb = RGBColor(128, 128, 128)
+    c = 192
+    style.font.color.rgb = RGBColor(c, c, c)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     style = document.styles.add_style('New Heading 1', WD_STYLE_TYPE.PARAGRAPH)
     style.font.size = Pt(15)
     style.font.name = DEFAULT_FONT_NAME
-    style.font.color.rgb = RGBColor(96, 96, 96)
+    c = 128
+    style.font.color.rgb = RGBColor(c, c, c)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     style = document.styles.add_style('New Heading 2', WD_STYLE_TYPE.PARAGRAPH)
     style.font.size = Pt(12)
     style.font.name = DEFAULT_FONT_NAME
-    style.font.color.rgb = RGBColor(64, 64, 64)
+    c = 64
+    style.font.color.rgb = RGBColor(c, c, c)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     style = document.styles.add_style('New Heading 3', WD_STYLE_TYPE.PARAGRAPH)
     style.font.size = Pt(10)
     style.font.name = DEFAULT_FONT_NAME
-    style.font.color.rgb = RGBColor(32, 32, 32)
+    c = 32
+    style.font.color.rgb = RGBColor(c, c, c)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+    style = document.styles.add_style('Code', WD_STYLE_TYPE.PARAGRAPH)
+    style.font.size = Pt(10)
+    style.font.name = DEFAULT_FONT_NAME_MONOSPACE
+    style.font.color.rgb = RGBColor(0, 128, 0)
+    style.paragraph_format.left_indent = Inches(0.25)
+    style.paragraph_format.right_indent = Inches(0.25)
 
 
 def docjson_to_docx(docjson_file, docx_file):
@@ -85,7 +97,7 @@ def docjson_to_docx(docjson_file, docx_file):
         elif tag == 'li':
             document.add_paragraph(text, style='List Bullet')
         elif tag == 'pre':
-            document.add_paragraph(text)
+            document.add_paragraph(text, style='Code')
         elif tag == 'img':
             url = d['src']
             local_file = get_local_file(url)
