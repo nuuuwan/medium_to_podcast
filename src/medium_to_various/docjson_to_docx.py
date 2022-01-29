@@ -1,6 +1,5 @@
 from docx import Document
 from docx.shared import Inches
-
 from utils import jsonx
 
 from medium_to_various.remote_file_utils import get_local_file

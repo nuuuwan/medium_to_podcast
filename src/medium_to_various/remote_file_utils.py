@@ -40,8 +40,14 @@ def get_local_file(url):
 
 if __name__ == '__main__':
     urls = [
-        'https://cdn-images-1.medium.com/max/800/1*pWm5OyLUt8QLXO0T6XBGWA.jpeg',
-        'https://cdn-images-1.medium.com/max/800/1*bxuYPpmd284j1zIYxgiMtQ.png',
+        os.path.join(
+            'https://cdn-images-1.medium.com',
+            'max/800/1*pWm5OyLUt8QLXO0T6XBGWA.jpeg',
+        ),
+        os.path.join(
+            'https://cdn-images-1.medium.com',
+            'max/800/1*bxuYPpmd284j1zIYxgiMtQ.png',
+        ),
     ]
     for url in urls:
         print(get_local_file(url))
