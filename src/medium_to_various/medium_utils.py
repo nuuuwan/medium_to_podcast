@@ -36,7 +36,8 @@ if __name__ == '__main__':
             lambda file_only: os.path.join(DIR_MEDIUM_POSTS, file_only),
             [
                 '2021-11-01_'
-                + 'The-2-Most-Important-Questions-about-Blockchain-c1e5937ff9fd.html',
+                + 'The-2-Most-Important-Questions-about-Blockchain'
+                + '-c1e5937ff9fd.html',
                 '2021-07-13_'
                 + 'Drawing-Dorling-Cartograms-of-Sri-Lanka-a22a8886d057.html',
             ],
