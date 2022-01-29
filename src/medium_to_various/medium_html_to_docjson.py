@@ -19,6 +19,7 @@ def _clean(str):
 
 def medium_html_to_docjson(html_file, docjson_file):
     html = filex.read(html_file)
+    html = html.replace('<br>', '\n')
     soup = BeautifulSoup(html, 'html.parser')
 
     docjson = []
@@ -46,6 +47,8 @@ def medium_html_to_docjson(html_file, docjson_file):
         elif child.name == 'img':
             src = child['src']
             docjson.append(dict(tag='img', src=src))
+        elif child.name == 'figcaption':
+            docjson.append(dict(tag='em', text=f'[{text}]'))
 
     child = soup.find('time')
     if child:

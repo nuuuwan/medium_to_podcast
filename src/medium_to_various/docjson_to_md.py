@@ -1,5 +1,7 @@
 from utils import filex, jsonx
 
+from medium_to_various.md_utils import DELIM_MD
+
 
 def docjson_to_md(docjson_file, md_file):
     """Parse."""
@@ -18,6 +20,8 @@ def docjson_to_md(docjson_file, md_file):
             md_lines.append(f'#### {text}')
         elif tag == 'p':
             md_lines.append(f'{text}')
+        elif tag == 'em':
+            md_lines.append(f'*{text}*')
         elif tag == 'blockquote':
             md_lines.append(f'>>> {text}')
         elif tag == 'li':
@@ -28,8 +32,10 @@ def docjson_to_md(docjson_file, md_file):
             src = d['src']
             md_lines.append(f'![Image]({src})')
         elif tag == 'time':
-            md_lines = [f'#### {text}'] + md_lines
+            md_lines.append('...')
+            md_lines.append(f'*Colombo, {text}*')
+            md_lines.append('---')
 
-    content = '\n\n'.join(md_lines)
+    content = DELIM_MD.join(md_lines)
     filex.write(md_file, content)
     print(f'Wrote {md_file}')

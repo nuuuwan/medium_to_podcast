@@ -1,6 +1,7 @@
 import os
 
 from medium_to_various.docjson_to_md import docjson_to_md
+from medium_to_various.docjson_utils import docjson_merge
 from medium_to_various.medium_html_to_docjson import medium_html_to_docjson
 
 DIR_MEDIUM = '/Users/nuwan.senaratna/Not.Dropbox/_CODING/data/medium'
@@ -25,11 +26,28 @@ if __name__ == '__main__':
 
     import random
 
-    html_file = random.choice(html_files)
-    print(f'Random html file: "{html_file}"')
+    random.shuffle(html_files)
+    SAMPLE_SIZE = 10
+    sample_html_files = html_files[:SAMPLE_SIZE]
+    # sample_html_files = list(
+    #     map(
+    #         lambda file_only: os.path.join(DIR_MEDIUM_POSTS, file_only),
+    #         [
+    #             '2021-07-13_'
+    #             + 'Drawing-Dorling-Cartograms-of-Sri-Lanka-a22a8886d057.html'
+    #         ],
+    #     )
+    # )
 
-    docjson_file = '/tmp/medium.doc.json'
-    medium_html_to_docjson(html_file, docjson_file)
+    docjson_files = []
+    for i, html_file in enumerate(sample_html_files):
+        file_base = f'/tmp/medium-{i}'
+        docjson_file = f'{file_base}.doc.json'
+        medium_html_to_docjson(html_file, docjson_file)
+        docjson_files.append(docjson_file)
 
-    md_file = '/tmp/medium.md'
-    docjson_to_md(docjson_file, md_file)
+    merged_docjson_file = '/tmp/medium-merged.doc.json'
+    docjson_merge(docjson_files, merged_docjson_file)
+
+    merged_md_file = '/tmp/medium-merged.md'
+    docjson_to_md(merged_docjson_file, merged_md_file)
