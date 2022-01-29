@@ -77,6 +77,7 @@ def docjson_to_docx(docjson_file, docx_file):
         tag, text = d['tag'], d.get('text')
         if tag == 'title':
             document.add_paragraph(text, style='New Heading 0')
+
         elif tag == 'h1':
             document.add_paragraph(text, style='New Heading 1')
         elif tag == 'h2':

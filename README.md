@@ -9,3 +9,4 @@
   *  [2022-01-29 10:29AM] Various
   *  [2022-01-29 10:30AM] Extra chars
   *  [2022-01-29 10:34AM] Added font colors; Code style
+  *  [2022-01-29 10:45AM] Various minor
