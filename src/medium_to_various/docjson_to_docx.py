@@ -7,14 +7,14 @@ from utils import jsonx
 
 from medium_to_various.remote_file_utils import get_local_file
 
-DEFAULT_IMAGE_WIDTH = 3
+DEFAULT_IMAGE_WIDTH = 2.4
 DEFAULT_FONT_NAME = 'Palatino'
 DEFAULT_FONT_NAME_MONOSPACE = 'Monaco'
 
 
 def _build_styles(document):
     style = document.styles['Normal']
-    style.font.size = Pt(10)
+    style.font.size = Pt(9)
     style.font.name = DEFAULT_FONT_NAME
 
     style = document.styles['Quote']
@@ -29,19 +29,19 @@ def _build_styles(document):
     style.paragraph_format.left_indent = Inches(0.25)
     style.paragraph_format.right_indent = Inches(0.25)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    style.font.size = Pt(10)
+    style.font.size = Pt(9)
     style.font.bold = False
     style.font.italic = True
 
     style = document.styles.add_style('New Heading 0', WD_STYLE_TYPE.PARAGRAPH)
-    style.font.size = Pt(20)
+    style.font.size = Pt(18)
     style.font.name = DEFAULT_FONT_NAME
     c = 192
     style.font.color.rgb = RGBColor(c, c, c)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     style = document.styles.add_style('New Heading 1', WD_STYLE_TYPE.PARAGRAPH)
-    style.font.size = Pt(15)
+    style.font.size = Pt(14)
     style.font.name = DEFAULT_FONT_NAME
     c = 128
     style.font.color.rgb = RGBColor(c, c, c)
@@ -55,14 +55,14 @@ def _build_styles(document):
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     style = document.styles.add_style('New Heading 3', WD_STYLE_TYPE.PARAGRAPH)
-    style.font.size = Pt(10)
+    style.font.size = Pt(9)
     style.font.name = DEFAULT_FONT_NAME
     c = 32
     style.font.color.rgb = RGBColor(c, c, c)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     style = document.styles.add_style('Code', WD_STYLE_TYPE.PARAGRAPH)
-    style.font.size = Pt(10)
+    style.font.size = Pt(9)
     style.font.name = DEFAULT_FONT_NAME_MONOSPACE
     style.font.color.rgb = RGBColor(0, 128, 0)
     style.paragraph_format.left_indent = Inches(0.25)
