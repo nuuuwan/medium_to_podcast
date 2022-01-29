@@ -1,5 +1,5 @@
-
 import time
+
 import setuptools
 
 DIST_NAME = 'medium_to_podcast'
@@ -39,10 +39,7 @@ setuptools.setup(
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
-
     install_requires=requirements,
     test_suite='nose.collector',
     tests_require=['nose'],
 )
-
-        

@@ -1,8 +1,6 @@
 """Test."""
-import unittest
 import os
-
-from utils import www
+import unittest
 
 from medium_to_podcast import parse
 
