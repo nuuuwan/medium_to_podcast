@@ -4,7 +4,6 @@ from medium_to_various.md_utils import DELIM_MD
 
 
 def docjson_to_md(docjson_file, md_file):
-    """Parse."""
     docjson = jsonx.read(docjson_file)
 
     md_lines = []

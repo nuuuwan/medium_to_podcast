@@ -1,5 +1,6 @@
 import os
 
+from medium_to_various.docjson_to_docx import docjson_to_docx
 from medium_to_various.docjson_to_md import docjson_to_md
 from medium_to_various.docjson_utils import docjson_merge
 from medium_to_various.medium_html_to_docjson import medium_html_to_docjson
@@ -51,3 +52,6 @@ if __name__ == '__main__':
 
     merged_md_file = '/tmp/medium-merged.md'
     docjson_to_md(merged_docjson_file, merged_md_file)
+
+    merged_docx_file = '/tmp/medium-merged.docx'
+    docjson_to_docx(merged_docjson_file, merged_docx_file)
