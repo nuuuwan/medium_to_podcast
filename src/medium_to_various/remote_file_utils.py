@@ -1,8 +1,21 @@
 import os
 
+from PIL import Image
 from utils import hashx, www
 
 DIR_REMOTE_FILES = '/Users/nuwan.senaratna/Not.Dropbox/_CODING/remote_files'
+
+
+def _convert_if_needed(local_file):
+    file_without_ext, ext = os.path.splitext(local_file)
+    if ext in ['.jpeg', '.jpg']:
+        new_local_file = f'{file_without_ext}.png'
+        if not os.path.exists(new_local_file):
+            img = Image.open(local_file)
+            img.save(new_local_file)
+            print(f'Converted {local_file} -> {new_local_file}')
+        return new_local_file
+    return local_file
 
 
 def _get_local_file_only(url):
@@ -21,11 +34,14 @@ def _download_if_not_exists(local_file, url):
 def get_local_file(url):
     local_file = _get_local_file_only(url)
     _download_if_not_exists(local_file, url)
+    local_file = _convert_if_needed(local_file)
     return local_file
 
 
 if __name__ == '__main__':
-    url = (
-        'https://cdn-images-1.medium.com/max/800/1*bxuYPpmd284j1zIYxgiMtQ.png'
-    )
-    print(get_local_file(url))
+    urls = [
+        'https://cdn-images-1.medium.com/max/800/1*pWm5OyLUt8QLXO0T6XBGWA.jpeg',
+        'https://cdn-images-1.medium.com/max/800/1*bxuYPpmd284j1zIYxgiMtQ.png',
+    ]
+    for url in urls:
+        print(get_local_file(url))

@@ -48,7 +48,7 @@ def medium_html_to_docjson(html_file, docjson_file):
             src = child['src']
             docjson.append(dict(tag='img', src=src))
         elif child.name == 'figcaption':
-            docjson.append(dict(tag='em', text=f'[{text}]'))
+            docjson.append(dict(tag='figcaption', text=f'{text}'))
 
     child = soup.find('time')
     if child:

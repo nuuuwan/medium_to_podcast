@@ -21,6 +21,8 @@ def docjson_to_md(docjson_file, md_file):
             md_lines.append(f'{text}')
         elif tag == 'em':
             md_lines.append(f'*{text}*')
+        elif tag == 'figcaption':
+            md_lines.append(f'*{text}*')
         elif tag == 'blockquote':
             md_lines.append(f'>>> {text}')
         elif tag == 'li':

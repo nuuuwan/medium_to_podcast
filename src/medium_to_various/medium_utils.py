@@ -27,6 +27,7 @@ if __name__ == '__main__':
 
     import random
 
+    random.seed(1)
     random.shuffle(html_files)
     SAMPLE_SIZE = 10
     sample_html_files = html_files[:SAMPLE_SIZE]

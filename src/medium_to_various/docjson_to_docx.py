@@ -1,5 +1,11 @@
 from docx import Document
+from docx.shared import Inches
+
 from utils import jsonx
+
+from medium_to_various.remote_file_utils import get_local_file
+
+DEFAULT_IMAGE_WIDTH = 4
 
 
 def docjson_to_docx(docjson_file, docx_file):
@@ -19,23 +25,26 @@ def docjson_to_docx(docjson_file, docx_file):
         elif tag == 'p':
             document.add_paragraph(text)
         elif tag == 'em':
-            p = document.add_paragraph(text)
-            p.add_run('italic.').italic = True
+            p = document.add_paragraph()
+            p.add_run(text).italic = True
+        elif tag == 'figcaption':
+            document.add_paragraph(text, style='Caption')
         elif tag == 'blockquote':
-            document.add_paragraph(text, style='Intense Quote')
+            document.add_paragraph(text, style='Quote')
 
         elif tag == 'li':
             document.add_paragraph(text, style='List Bullet')
         elif tag == 'pre':
             document.add_paragraph(text)
         elif tag == 'img':
-            d['src']
-            # document.add_picture(src)
+            url = d['src']
+            local_file = get_local_file(url)
+            document.add_picture(local_file, width=Inches(DEFAULT_IMAGE_WIDTH))
 
         elif tag == 'time':
-            text_time = f'Colombo, {text}'
-            p = document.add_paragraph(text_time)
-            p.add_run('italic.').italic = True
+            f'Colombo, {text}'
+            p = document.add_paragraph()
+            p.add_run(text).italic = True
 
     document.save(docx_file)
     print(f'Wrote {docx_file}')
