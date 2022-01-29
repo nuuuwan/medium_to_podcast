@@ -26,3 +26,4 @@ pip install -i https://test.pypi.org/simple/ medium_to_podcast-nuuuwan
 
 
           *  [2022-01-29 06:52AM] Various
+  *  [2022-01-29 07:17AM] docjson_to_md, medium_html_to_docjson and medium_utils
