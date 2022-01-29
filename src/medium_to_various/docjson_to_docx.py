@@ -7,7 +7,7 @@ from medium_to_various.remote_file_utils import get_local_file
 
 DEFAULT_IMAGE_WIDTH = 3
 DEFAULT_FONT_NAME = 'Georgia'
-ALIGN_CENTER = 0
+ALIGN_CENTER = 1
 
 
 def _build_styles(document):
